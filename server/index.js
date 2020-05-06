@@ -9,7 +9,7 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-// 38
+// 42
 //const authRoutes = require('./routes/authRoutes');
 //authRoutes(app);
 require('./routes/authRoutes')(app);
