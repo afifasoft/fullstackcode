@@ -21,7 +21,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// 64
+// 70
 //const authRoutes = require('./routes/authRoutes');
 //authRoutes(app);
 require('./routes/authRoutes')(app);
