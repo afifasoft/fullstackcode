@@ -23,7 +23,7 @@ const Landing = () => {
 
 const App = () =>  {
     return (
-      <div>
+      <div className="container">
         <BrowserRouter>
           <div>
             <Header />
