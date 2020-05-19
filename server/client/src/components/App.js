@@ -1,11 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Header';
 
-const Header = () => {
-  return (
-    <h2>Header</h2>
-  );
-}
 
 const Dashboard = () => {
   return (
@@ -30,8 +26,10 @@ const App = () =>  {
       <div>
         <BrowserRouter>
           <div>
-            <Route path="/" exact component={Landing} />
-            <Route path="/surveys" component={Dashboard} />
+            <Header />
+            <Route exact path="/"  component={Landing} />
+            <Route exact path="/surveys"  component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew}/>
           </div>
         </BrowserRouter>
       </div>
