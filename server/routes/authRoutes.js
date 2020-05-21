@@ -17,7 +17,8 @@ module.exports = (app) => {
     // its passport method - which needs to terminate a login session
     // it will remove the req.user property and clear the login session.
     req.logout();
-    res.send(req.user);
+    //res.send(req.user);
+    res.redirect('/');
   });
 
   app.get('/api/current_user', (req, res) => {
