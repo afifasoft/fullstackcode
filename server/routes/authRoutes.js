@@ -5,7 +5,13 @@ module.exports = (app) => {
     scope: ['profile', 'email']
   }));
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+  );
 
   app.get('/api/logout', (req, res) => {
     // its passport method - which needs to terminate a login session
