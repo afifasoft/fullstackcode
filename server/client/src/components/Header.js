@@ -10,17 +10,13 @@ class Header extends Component {
         return;
 
       case false:
-        return (
-          <li>
-            <a href="/auth/google">Login With Google</a>
-          </li>
-        );
+        return <li><a href="/auth/google">Login With Google</a></li>;
+
       default:
-        return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
-        );
+        return [
+          <li key="1"><Payments /></li>,
+          <li key="2"><a href="/api/logout">Logout</a></li>
+        ];
     }
   }
 
