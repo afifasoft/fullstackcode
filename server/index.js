@@ -21,10 +21,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// 102
+// 106
 //const authRoutes = require('./routes/authRoutes');
 //authRoutes(app);
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
