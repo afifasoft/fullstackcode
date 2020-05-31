@@ -12,6 +12,9 @@ module.exports = app => {
       });
 
       console.log(charge);
+      req.user.credits += 5;
+      const user = await req.user.save();
+      res.send(user);
   });
 
 };
