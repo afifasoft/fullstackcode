@@ -29,7 +29,7 @@ class Mailer extends helper.Mail {
 
   addClickTracking() {
     const trackingSettings = new helper.TrackingSettings();
-    const clickTracking = new helper.ClickTracking(true, true);
+    const clickTracking = new helper.ClickTracking(true,true);
 
     trackingSettings.setClickTracking(clickTracking);
     // Mailer Built in functions
@@ -38,22 +38,23 @@ class Mailer extends helper.Mail {
 
   addRecipients() {
     const personalize = new helper.Personalization();
-    this.recipients.forEach(recipients => {
-      personalize.addTo(recipients);
+    this.recipients.forEach(recipient => {
+      personalize.addTo(recipient);
     });
 
     this.addPersonalization(personalize);
   }
 
   async send() {
-
+    console.log('send');
     const request = this.sgApi.emptyRequest({
       method: 'POST',
       path: '/v3/mail/send',
       body: this.toJSON()
     });
-
-    const response = this.sgApi.API(request);
+    console.log('request: ', request);
+    const response = await this.sgApi.API(request);
+    console.log('response: ', response);
     return response;
   }
 
