@@ -11,7 +11,7 @@ const Survey = mongoose.model('surveys');
 
 module.exports = (app) => {
 
-  app.get('/api/surveys/thanks', (req, res) => {
+  app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for voting!');
   });
 
@@ -32,6 +32,7 @@ module.exports = (app) => {
       .compact()
       .uniqBy('email', 'surveyId')
       .each(({ surveyId, email, choice}) => {
+        console.log(choice);
         Survey.updateOne({
           _id: surveyId,
           recipients: {
@@ -39,7 +40,8 @@ module.exports = (app) => {
           }
         }, {
           $inc: { [choice] : 1 },
-          $set: { 'recipients.$.responded' : true }
+          $set: { 'recipients.$.responded' : true },
+          lastResponded: new Date()
         }).exec();
       })
       .value();
